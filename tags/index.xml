@@ -6,5 +6,14 @@
     <description>Recent content in Tags on Aaron Petry</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language><atom:link href="https://aaronpetry.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>projects</title>
+      <link>https://aaronpetry.io/tags/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aaronpetry.io/tags/projects/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

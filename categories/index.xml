@@ -6,5 +6,14 @@
     <description>Recent content in Categories on Aaron Petry</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language><atom:link href="https://aaronpetry.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>projects</title>
+      <link>https://aaronpetry.io/categories/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aaronpetry.io/categories/projects/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

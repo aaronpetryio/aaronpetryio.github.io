@@ -6,14 +6,14 @@
     <description>Recent content in Blogs on Aaron Petry</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 04 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aaronpetry.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aaronpetry.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Blog coming soon!</title>
-      <link>https://aaronpetry.io/blog/example-blog/</link>
-      <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate>
+      <title>Learning Basketball Analytics - Week 0 - Introduction</title>
+      <link>https://aaronpetry.io/blog/nba-week-1/</link>
+      <pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://aaronpetry.io/blog/example-blog/</guid>
-      <description>This is going to be such a sweet blog. I&amp;rsquo;m not sure exactly sure what I&amp;rsquo;m going to post, but as soon as I know, you will too!</description>
+      <guid>https://aaronpetry.io/blog/nba-week-1/</guid>
+      <description>Welcome to the beginning of my basketball analytics journey! More coming soon.. :)</description>
     </item>
     
   </channel>

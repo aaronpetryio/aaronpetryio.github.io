@@ -3,6 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://aaronpetry.io/</loc>
+    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aaronpetry.io/blog/example-blog/</loc>
+    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aaronpetry.io/blog/</loc>
+    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aaronpetry.io/tags/excitement/</loc>
+    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aaronpetry.io/tags/</loc>
+    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aaronpetry.io/tags/testing/</loc>
+    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://aaronpetry.io/categories/</loc>
   </url><url>
@@ -11,7 +27,5 @@
     <loc>https://aaronpetry.io/tags/projects/</loc>
   </url><url>
     <loc>https://aaronpetry.io/categories/projects/</loc>
-  </url><url>
-    <loc>https://aaronpetry.io/tags/</loc>
   </url>
 </urlset>

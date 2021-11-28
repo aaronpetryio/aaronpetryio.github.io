@@ -6,7 +6,17 @@
     <description>Recent content in Blogs on Aaron Petry</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 21 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aaronpetry.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aaronpetry.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning Basketball Analytics - Week 1 - Scraping Basketball-Reference</title>
+      <link>https://aaronpetry.io/blog/nba-week-1/</link>
+      <pubDate>Sun, 28 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://aaronpetry.io/blog/nba-week-1/</guid>
+      <description>Introduction Welcome to week one! I&amp;rsquo;m still making my way through Basketball on Paper, but I wanted to make sure I got a blog out this week (consistency, remember?).
+As I work through the book and try to build models or do analysis, I know I&amp;rsquo;ll need data. So, for this week, I&amp;rsquo;ll walk through how I built a basic webscraper using BeautifulSoup. The webscraper scrapes advanced team states off Basketball-Reference and saves them to a CSV for future use.</description>
+    </item>
+    
     <item>
       <title>Learning Basketball Analytics - Week 0 - Introduction</title>
       <link>https://aaronpetry.io/blog/nba-week-0/</link>

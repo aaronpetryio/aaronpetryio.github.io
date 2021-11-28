@@ -153,7 +153,7 @@ adv_stats_header <span style="color:#f92672">=</span> adv_stats_table<span style
 headers <span style="color:#f92672">=</span> adv_stats_headers<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;th&#39;</span>)
 headers <span style="color:#f92672">=</span> [ele<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip() <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> headers[<span style="color:#ae81ff">6</span>:]]
 </code></pre></div><p>This part always feels a little bit like hunting and pecking to me, but I&rsquo;ll try to outline my process. When I visit the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a>, find the table that I want, and right-click inspect, I see the following HTML:
-<img src="aaronpetry.io/img/html_adv_table_id.png" alt=""></p>
+<img src="https://www.aaronpetry.io/img/html_adv_table_id.png" alt=""></p>
 <p>I see that the table has an <strong>id</strong> attribute of <strong>advanced_team</strong>. I&rsquo;ll pass that name to the soup object to find and I&rsquo;ll save that to my <strong>adv_stats_table</strong> object. From there, I do essentially the same thing ot find the other elements. I find the header row by looking for the <strong>thead</strong> attribute. Then, I find all of the individual headers by looking for all of the <strong>th</strong> elements.</p>
 <p>I do notice that there is a first row that has the headers of <strong>Offense Four Factors</strong> and <strong>Defense Four Factors</strong>, but I want to skip those. To do that, I start only pulling in the headers that start after they appear.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Manually add the &#39;Year&#39; header</span>
@@ -168,7 +168,7 @@ nba_adv_stats<span style="color:#f92672">.</span>append([ele <span style="color:
 adv_stats_body <span style="color:#f92672">=</span> adv_stats_table<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;tbody&#39;</span>)
 adv_stats_rows <span style="color:#f92672">=</span> adv_stats_body<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;tr&#39;</span>)
 </code></pre></div><p>Using the same process as above, find the <strong>tbody</strong> element. Inside of the <strong>tbody</strong> element, find all of the rows that are marked with the <strong>tr</strong> element. The data we want is located within each of those rows.
-<img src="aaronpetry.io/img/tbody_trows.png" alt=""></p>
+<img src="https://www.aaronpetry.io/img/tbody_trows.png" alt=""></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#for each year in the years list, add the advanced stats data</span>
 <span style="color:#66d9ef">for</span> year <span style="color:#f92672">in</span> years:
 	<span style="color:#75715e">#For each row in the advanced stats table, add the team data to the nba_adv_stats list</span>

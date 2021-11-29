@@ -14,7 +14,7 @@
       
       <guid>https://aaronpetry.io/blog/nba-week-1/</guid>
       <description>Introduction Welcome to week one! I&amp;rsquo;m still making my way through Basketball on Paper, but I wanted to make sure I got a blog out this week (consistency, remember?).
-As I work through the book and try to build models or do analysis, I know I&amp;rsquo;ll need data. So, for this week, I&amp;rsquo;ll walk through how I built a basic webscraper using BeautifulSoup. The webscraper scrapes advanced team states off Basketball-Reference and saves them to a CSV for future use.</description>
+As I work through the book and try to build models or do analysis, I know I&amp;rsquo;ll need data. So, for this week, I&amp;rsquo;ll walk through how I built a basic webscraper using BeautifulSoup. The webscraper grabs advanced team stats off of Basketball-Reference and saves them to a CSV for future use.</description>
     </item>
     
     <item>

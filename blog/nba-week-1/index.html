@@ -71,7 +71,7 @@
           <p><img src="https://miro.medium.com/max/550/0*Bj_O1jRFzZjKxzi4.jpg" alt=""></p>
 <h1 id="introduction">Introduction</h1>
 <p>Welcome to week one! I&rsquo;m still making my way through <a href="https://www.amazon.com/Basketball-Paper-Rules-Performance-Analysis/dp/1574886886">Basketball on Paper</a>, but I wanted to make sure I got a blog out this week (consistency, remember?).</p>
-<p>As I work through the book and try to build models or do analysis, I know I&rsquo;ll need data. So, for this week, I&rsquo;ll walk through how I built a basic webscraper using BeautifulSoup. The webscraper scrapes advanced team states off <a href="https://www.basketball-reference.com/">Basketball-Reference</a> and saves them to a CSV for future use.</p>
+<p>As I work through the book and try to build models or do analysis, I know I&rsquo;ll need data. So, for this week, I&rsquo;ll walk through how I built a basic webscraper using BeautifulSoup. The webscraper grabs advanced team stats off of <a href="https://www.basketball-reference.com/">Basketball-Reference</a> and saves them to a CSV for future use.</p>
 <h1 id="prerequisites">Prerequisites</h1>
 <p>To build the scraper, I used the following tools:</p>
 <ul>
@@ -108,7 +108,7 @@
 <ul>
 <li>Requests
 <ul>
-<li>Requests is used to grab and store the webpage content that Beautiful Soup will parse through</li>
+<li>Requests is used to grab and store the webpage content that BeautifulSoup will parse through</li>
 </ul>
 </li>
 <li>CSV
@@ -136,22 +136,22 @@ nba_adv_stats <span style="color:#f92672">=</span> []
 <span style="color:#75715e">#Create the header row with labels from the table</span>
 url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://www.basketball-reference.com/leagues/NBA_&#34;</span> <span style="color:#f92672">+</span> years[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.html&#34;</span>
 </code></pre></div><p>The first thing I did was visit <a href="https://www.basketball-reference.com/">Basketball-Reference</a> and decide which table of stats I wanted to scrape. After some searching, I decided that the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a> in the code snippet above contained a good number of tables that I thought I could use in analyses (had to google that plural). For this exercise, I&rsquo;ll be trying to scrape the <strong>Advanced Stats</strong> table.</p>
-<p>I created a list containing the years because I could then I could easily alter this scraper to loop through the list and pull stats for multiple years if needed.</p>
+<p>I created a list containing the years because I could then easily alter this scraper to loop through the list and pull stats for multiple years if needed.</p>
 <p>Finally, the empty list above was initiated to store the advanced stat data that I wanted to grab.</p>
 <h3 id="2-store-the-webpage-content-and-define-the-table-headers">2. Store the webpage content and define the table headers</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Get the webpage content from Basketball-Reference</span>
 page <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
 soup <span style="color:#f92672">=</span> BeautifulSoup(page<span style="color:#f92672">.</span>content, <span style="color:#e6db74">&#39;html.parser&#39;</span>)
-</code></pre></div><p>Using the URL defined above, use <em>requests</em> to grab and store the webpage content. BeautifulSoup provides us an object which stores the webpage data.</p>
+</code></pre></div><p>Using the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a> defined above, I used <em>requests</em> to grab and store the webpage content. BeautifulSoup provides us an object which stores the webpage data.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Find the advanced stats header row (skip the top header row and ignore rank)</span>
 adv_stats_table <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;table&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;id&#39;</span>:<span style="color:#e6db74">&#39;advanced-team&#39;</span>})
 adv_stats_header <span style="color:#f92672">=</span> adv_stats_table<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;thead&#39;</span>)
 headers <span style="color:#f92672">=</span> adv_stats_headers<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;th&#39;</span>)
 headers <span style="color:#f92672">=</span> [ele<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip() <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> headers[<span style="color:#ae81ff">6</span>:]]
-</code></pre></div><p>This part always feels a little bit like hunting and pecking to me, but I&rsquo;ll try to outline my process. When I visit the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a>, find the table that I want, and right-click inspect, I see the following HTML:
+</code></pre></div><p>This part always feels a little bit like hunting and pecking to me, but I&rsquo;ll try to outline my process. When I visit the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a>, find the table that I want, and right-click to inspect, I see the following HTML:
 <img src="https://www.aaronpetry.io/img/html_adv_table_id.png" alt=""></p>
-<p>I see that the table has an <strong>id</strong> attribute of <strong>advanced_team</strong>. I&rsquo;ll pass that name to the soup object to find and I&rsquo;ll save that to my <strong>adv_stats_table</strong> object. From there, I do essentially the same thing ot find the other elements. I find the header row by looking for the <strong>thead</strong> attribute. Then, I find all of the individual headers by looking for all of the <strong>th</strong> elements.</p>
-<p>I do notice that there is a first row that has the headers of <strong>Offense Four Factors</strong> and <strong>Defense Four Factors</strong>, but I want to skip those. To do that, I start only pulling in the headers that start after they appear.</p>
+<p>I see that the table has an <strong>id</strong> element named <strong>advanced_team</strong>. I&rsquo;ll pass that name to the soup object to find and I&rsquo;ll save that to my <strong>adv_stats_table</strong> object. From there, I do essentially the same thing to find the other elements. I find the header row by looking for the <strong>thead</strong> element. Then, I find all of the individual headers by looking for all of the <strong>th</strong> elements.</p>
+<p>I do notice that there is a first row that has the headers of <strong>Offense Four Factors</strong> and <strong>Defense Four Factors</strong>, but I want to skip those. To do that, I start only pulling in the headers that appear after.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Manually add the &#39;Year&#39; header</span>
 year_header <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Year&#39;</span>]
 combined_headers <span style="color:#f92672">=</span> year_header <span style="color:#f92672">+</span> headers

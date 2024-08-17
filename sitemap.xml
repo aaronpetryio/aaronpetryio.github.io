@@ -2,28 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://aaronpetry.io/</loc>
+    <loc>http://localhost:8080/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:8080/blog/testing/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:8080/blog/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:8080/blog/nba-week-1/</loc>
     <lastmod>2021-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://aaronpetry.io/blog/</loc>
-    <lastmod>2021-11-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://aaronpetry.io/blog/nba-week-1/</loc>
-    <lastmod>2021-11-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://aaronpetry.io/blog/nba-week-0/</loc>
+    <loc>http://localhost:8080/blog/nba-week-0/</loc>
     <lastmod>2021-11-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://aaronpetry.io/resume/</loc>
+    <loc>http://localhost:8080/resume/</loc>
   </url><url>
-    <loc>https://aaronpetry.io/categories/</loc>
+    <loc>http://localhost:8080/categories/</loc>
   </url><url>
-    <loc>https://aaronpetry.io/projects/</loc>
+    <loc>http://localhost:8080/tags/projects/</loc>
   </url><url>
-    <loc>https://aaronpetry.io/tags/projects/</loc>
+    <loc>http://localhost:8080/categories/projects/</loc>
   </url><url>
-    <loc>https://aaronpetry.io/categories/projects/</loc>
+    <loc>http://localhost:8080/projects/</loc>
   </url><url>
-    <loc>https://aaronpetry.io/tags/</loc>
+    <loc>http://localhost:8080/tags/</loc>
   </url>
 </urlset>

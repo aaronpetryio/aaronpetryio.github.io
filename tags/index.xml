@@ -2,18 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Aaron Petry</title>
-    <link>https://aaronpetry.io/tags/</link>
+    <link>http://localhost:8080/tags/</link>
     <description>Recent content in Tags on Aaron Petry</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language><atom:link href="https://aaronpetry.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <atom:link href="http://localhost:8080/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>projects</title>
-      <link>https://aaronpetry.io/tags/projects/</link>
+      <title>Projects</title>
+      <link>http://localhost:8080/tags/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://aaronpetry.io/tags/projects/</guid>
+      <guid>http://localhost:8080/tags/projects/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

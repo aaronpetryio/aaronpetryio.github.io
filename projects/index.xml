@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Aaron Petry</title>
-    <link>http://localhost:8080/projects/</link>
+    <link>https://aaronpetry.io/projects/</link>
     <description>Recent content in Projects on Aaron Petry</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <atom:link href="http://localhost:8080/projects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://aaronpetry.io/projects/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

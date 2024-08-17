@@ -18,6 +18,11 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+
+    
+  
+
+
   </head>
   <body>
     <div id="content">
@@ -99,12 +104,12 @@
 <p>It might be worth finding a good guide on configuring your Python environment/tools. A good IDE alternative to <a href="https://code.visualstudio.com/download">VSCode</a> is Spyder (also available via the base <a href="https://docs.anaconda.com/anaconda/install/mac-os/">Anaconda</a> installation).</p>
 <h1 id="and-now-the-webscraping">And now.. the webscraping!</h1>
 <h3 id="1-import-libraries-and-define-parameters">1. Import libraries and define parameters</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Import requests, csv, os, and BeautifulSoup</span>
-<span style="color:#f92672">import</span> requests  
-<span style="color:#f92672">import</span> csv
-<span style="color:#f92672">import</span> os
-<span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
-</code></pre></div><p><strong>Library Purposes</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Import requests, csv, os, and BeautifulSoup</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> csv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+</span></span></code></pre></div><p><strong>Library Purposes</strong></p>
 <ul>
 <li>Requests
 <ul>
@@ -127,73 +132,73 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Create a list of years to pull data from</span>
-years <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;2022&#39;</span>]
-
-<span style="color:#75715e">#Create an empty list to store the data</span>
-nba_adv_stats <span style="color:#f92672">=</span> []
-
-<span style="color:#75715e">#Create the header row with labels from the table</span>
-url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://www.basketball-reference.com/leagues/NBA_&#34;</span> <span style="color:#f92672">+</span> years[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.html&#34;</span>
-</code></pre></div><p>The first thing I did was visit <a href="https://www.basketball-reference.com/">Basketball-Reference</a> and decide which table of stats I wanted to scrape. After some searching, I decided that the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a> in the code snippet above contained a good number of tables that I thought I could use in analyses (had to google that plural). For this exercise, I&rsquo;ll be trying to scrape the <strong>Advanced Stats</strong> table.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Create a list of years to pull data from</span>
+</span></span><span style="display:flex;"><span>years <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;2022&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Create an empty list to store the data</span>
+</span></span><span style="display:flex;"><span>nba_adv_stats <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Create the header row with labels from the table</span>
+</span></span><span style="display:flex;"><span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://www.basketball-reference.com/leagues/NBA_&#34;</span> <span style="color:#f92672">+</span> years[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.html&#34;</span>
+</span></span></code></pre></div><p>The first thing I did was visit <a href="https://www.basketball-reference.com/">Basketball-Reference</a> and decide which table of stats I wanted to scrape. After some searching, I decided that the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a> in the code snippet above contained a good number of tables that I thought I could use in analyses (had to google that plural). For this exercise, I&rsquo;ll be trying to scrape the <strong>Advanced Stats</strong> table.</p>
 <p>I created a list containing the years because I could then easily alter this scraper to loop through the list and pull stats for multiple years if needed.</p>
 <p>Finally, the empty list above was initiated to store the advanced stat data that I wanted to grab.</p>
 <h3 id="2-store-the-webpage-content-and-define-the-table-headers">2. Store the webpage content and define the table headers</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Get the webpage content from Basketball-Reference</span>
-page <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
-soup <span style="color:#f92672">=</span> BeautifulSoup(page<span style="color:#f92672">.</span>content, <span style="color:#e6db74">&#39;html.parser&#39;</span>)
-</code></pre></div><p>Using the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a> defined above, I used <em>requests</em> to grab and store the webpage content. BeautifulSoup provides us an object which stores the webpage data.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Find the advanced stats header row (skip the top header row and ignore rank)</span>
-adv_stats_table <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;table&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;id&#39;</span>:<span style="color:#e6db74">&#39;advanced-team&#39;</span>})
-adv_stats_header <span style="color:#f92672">=</span> adv_stats_table<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;thead&#39;</span>)
-headers <span style="color:#f92672">=</span> adv_stats_headers<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;th&#39;</span>)
-headers <span style="color:#f92672">=</span> [ele<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip() <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> headers[<span style="color:#ae81ff">6</span>:]]
-</code></pre></div><p>This part always feels a little bit like hunting and pecking to me, but I&rsquo;ll try to outline my process. When I visit the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a>, find the table that I want, and right-click to inspect, I see the following HTML:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Get the webpage content from Basketball-Reference</span>
+</span></span><span style="display:flex;"><span>page <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
+</span></span><span style="display:flex;"><span>soup <span style="color:#f92672">=</span> BeautifulSoup(page<span style="color:#f92672">.</span>content, <span style="color:#e6db74">&#39;html.parser&#39;</span>)
+</span></span></code></pre></div><p>Using the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a> defined above, I used <em>requests</em> to grab and store the webpage content. BeautifulSoup provides us an object which stores the webpage data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Find the advanced stats header row (skip the top header row and ignore rank)</span>
+</span></span><span style="display:flex;"><span>adv_stats_table <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;table&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;id&#39;</span>:<span style="color:#e6db74">&#39;advanced-team&#39;</span>})
+</span></span><span style="display:flex;"><span>adv_stats_header <span style="color:#f92672">=</span> adv_stats_table<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;thead&#39;</span>)
+</span></span><span style="display:flex;"><span>headers <span style="color:#f92672">=</span> adv_stats_headers<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;th&#39;</span>)
+</span></span><span style="display:flex;"><span>headers <span style="color:#f92672">=</span> [ele<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip() <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> headers[<span style="color:#ae81ff">6</span>:]]
+</span></span></code></pre></div><p>This part always feels a little bit like hunting and pecking to me, but I&rsquo;ll try to outline my process. When I visit the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a>, find the table that I want, and right-click to inspect, I see the following HTML:
 <img src="https://www.aaronpetry.io/img/html_adv_table_id.png" alt=""></p>
 <p>I see that the table has an <strong>id</strong> element named <strong>advanced_team</strong>. I&rsquo;ll pass that name to the soup object to find and I&rsquo;ll save that to my <strong>adv_stats_table</strong> object. From there, I do essentially the same thing to find the other elements. I find the header row by looking for the <strong>thead</strong> element. Then, I find all of the individual headers by looking for all of the <strong>th</strong> elements.</p>
 <p>I do notice that there is a first row that has the headers of <strong>Offense Four Factors</strong> and <strong>Defense Four Factors</strong>, but I want to skip those. To do that, I start only pulling in the headers that appear after.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Manually add the &#39;Year&#39; header</span>
-year_header <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Year&#39;</span>]
-combined_headers <span style="color:#f92672">=</span> year_header <span style="color:#f92672">+</span> headers
-
-<span style="color:#75715e">#Append the headers to the beginning of the nba_adv_stats list</span>
-nba_adv_stats<span style="color:#f92672">.</span>append([ele <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> combined_headers])
-</code></pre></div><p>Since I plan on potentially using this scraper to pull data for multiple years, I include a <strong>Year</strong> header which I&rsquo;ll eventually populate with <strong>2022</strong> since that is the year in the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a> on <a href="https://www.basketball-reference.com/">Basketball-Reference</a>. Once I have all of the headers, I append it to my <strong>nba_adv_stats</strong> list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Manually add the &#39;Year&#39; header</span>
+</span></span><span style="display:flex;"><span>year_header <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Year&#39;</span>]
+</span></span><span style="display:flex;"><span>combined_headers <span style="color:#f92672">=</span> year_header <span style="color:#f92672">+</span> headers
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Append the headers to the beginning of the nba_adv_stats list</span>
+</span></span><span style="display:flex;"><span>nba_adv_stats<span style="color:#f92672">.</span>append([ele <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> combined_headers])
+</span></span></code></pre></div><p>Since I plan on potentially using this scraper to pull data for multiple years, I include a <strong>Year</strong> header which I&rsquo;ll eventually populate with <strong>2022</strong> since that is the year in the <a href="https://www.basketball-reference.com/leagues/NBA_2022.html">URL</a> on <a href="https://www.basketball-reference.com/">Basketball-Reference</a>. Once I have all of the headers, I append it to my <strong>nba_adv_stats</strong> list.</p>
 <h3 id="3-find-the-table-body-and-scrape-the-data">3. Find the table body and scrape the data</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Find the advanced stats body</span>
-adv_stats_body <span style="color:#f92672">=</span> adv_stats_table<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;tbody&#39;</span>)
-adv_stats_rows <span style="color:#f92672">=</span> adv_stats_body<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;tr&#39;</span>)
-</code></pre></div><p>Using the same process as above, find the <strong>tbody</strong> element. Inside of the <strong>tbody</strong> element, find all of the rows that are marked with the <strong>tr</strong> element. The data we want is located within each of those rows.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Find the advanced stats body</span>
+</span></span><span style="display:flex;"><span>adv_stats_body <span style="color:#f92672">=</span> adv_stats_table<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;tbody&#39;</span>)
+</span></span><span style="display:flex;"><span>adv_stats_rows <span style="color:#f92672">=</span> adv_stats_body<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;tr&#39;</span>)
+</span></span></code></pre></div><p>Using the same process as above, find the <strong>tbody</strong> element. Inside of the <strong>tbody</strong> element, find all of the rows that are marked with the <strong>tr</strong> element. The data we want is located within each of those rows.
 <img src="https://www.aaronpetry.io/img/tbody_trows.png" alt=""></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#for each year in the years list, add the advanced stats data</span>
-<span style="color:#66d9ef">for</span> year <span style="color:#f92672">in</span> years:
-	<span style="color:#75715e">#For each row in the advanced stats table, add the team data to the nba_adv_stats list</span>
-	<span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> adv_stats_rows:
-		<span style="color:#75715e">#Populate the Year column (will need to update once this is a loop)</span>
-		year_column <span style="color:#f92672">=</span> [year]
-		
-		<span style="color:#75715e">#Find the rest of the data columns</span>
-		data_columns <span style="color:#f92672">=</span> row<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;td&#39;</span>)
-		data_columns <span style="color:#f92672">=</span> [ele<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip() <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> data_columns]
-		
-		<span style="color:#75715e">#Combine columns</span>
-		combined_columns <span style="color:#f92672">=</span> year_column <span style="color:#f92672">+</span> data_columns
-		
-		<span style="color:#75715e">#Combine the columns and add them to the nba_adv_stats list</span>
-		nba_adv_stats<span style="color:#f92672">.</span>append([ele <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> combined_columns])
-</code></pre></div><p>I loop through all of the years (pretend there isn&rsquo;t more than one) and I loop through all of the rows. This will allow me to get data for every year that I need and for every team that is listed in the <strong>advanced stats</strong> table for that year.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#for each year in the years list, add the advanced stats data</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> year <span style="color:#f92672">in</span> years:
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#For each row in the advanced stats table, add the team data to the nba_adv_stats list</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> adv_stats_rows:
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#Populate the Year column (will need to update once this is a loop)</span>
+</span></span><span style="display:flex;"><span>		year_column <span style="color:#f92672">=</span> [year]
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#Find the rest of the data columns</span>
+</span></span><span style="display:flex;"><span>		data_columns <span style="color:#f92672">=</span> row<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#39;td&#39;</span>)
+</span></span><span style="display:flex;"><span>		data_columns <span style="color:#f92672">=</span> [ele<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip() <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> data_columns]
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#Combine columns</span>
+</span></span><span style="display:flex;"><span>		combined_columns <span style="color:#f92672">=</span> year_column <span style="color:#f92672">+</span> data_columns
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#Combine the columns and add them to the nba_adv_stats list</span>
+</span></span><span style="display:flex;"><span>		nba_adv_stats<span style="color:#f92672">.</span>append([ele <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> combined_columns])
+</span></span></code></pre></div><p>I loop through all of the years (pretend there isn&rsquo;t more than one) and I loop through all of the rows. This will allow me to get data for every year that I need and for every team that is listed in the <strong>advanced stats</strong> table for that year.</p>
 <p>Inside of the rows, the data is stored in the <strong>td</strong> element. We will find all of those data elements and store them in our data_columns object. Once we have all of the data that we need (or that is available :) ), we will combine it with our year column that we created. After we&rsquo;ve combined all of our data, we will add it to our <strong>nba_adv_stats</strong> list. It is time to write it to storage!</p>
 <h3 id="4-save-the-file-to-a-csv-for-future-use">4. Save the file to a CSV for future use</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Create a dynamic CSV file name based on the year scraped</span>
-csv_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>getcwd(), <span style="color:#e6db74">&#34;data/&#34;</span>)
-csv_file <span style="color:#f92672">=</span> csv_path <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;nba_adv_stats_&#34;</span> <span style="color:#f92672">+</span> years[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.csv&#34;</span>
-
-<span style="color:#75715e">#Write the nba_adv_stats list to a CSV</span>
-<span style="color:#66d9ef">with</span> open(csv_file, <span style="color:#e6db74">&#34;w&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>, newline<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> csvfile:
-	writer <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>writer(csvfile)
-	<span style="color:#66d9ef">for</span> data <span style="color:#f92672">in</span> nba_adv_stats:
-		writer<span style="color:#f92672">.</span>writerow(data)
-</code></pre></div><p>This will depend on your use case(s), but I chose to name my file based on the year of data that I&rsquo;m grabbing. If I update my scraper to pull for multiple years, I could either have different CSV files based on the year or I could create one combined CSV file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Create a dynamic CSV file name based on the year scraped</span>
+</span></span><span style="display:flex;"><span>csv_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>getcwd(), <span style="color:#e6db74">&#34;data/&#34;</span>)
+</span></span><span style="display:flex;"><span>csv_file <span style="color:#f92672">=</span> csv_path <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;nba_adv_stats_&#34;</span> <span style="color:#f92672">+</span> years[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.csv&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Write the nba_adv_stats list to a CSV</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(csv_file, <span style="color:#e6db74">&#34;w&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>, newline<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">as</span> csvfile:
+</span></span><span style="display:flex;"><span>	writer <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>writer(csvfile)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> data <span style="color:#f92672">in</span> nba_adv_stats:
+</span></span><span style="display:flex;"><span>		writer<span style="color:#f92672">.</span>writerow(data)
+</span></span></code></pre></div><p>This will depend on your use case(s), but I chose to name my file based on the year of data that I&rsquo;m grabbing. If I update my scraper to pull for multiple years, I could either have different CSV files based on the year or I could create one combined CSV file.</p>
 <p>I wanted to save the data to a specific <strong>data/</strong> folder that is located in the parent directory (my webscraper is stored in a <strong>scraper</strong> folder).</p>
 <p>Once the CSV file is created, I&rsquo;m ready to do some exploratory analysis on the data!</p>
 <h1 id="artifacts">Artifacts</h1>

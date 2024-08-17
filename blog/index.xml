@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Aaron Petry</title>
-    <link>http://localhost:8080/blog/</link>
+    <link>https://aaronpetry.io/blog/</link>
     <description>Recent content in Blogs on Aaron Petry</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 21 Nov 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:8080/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://aaronpetry.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Another one</title>
-      <link>http://localhost:8080/blog/testing/</link>
+      <link>https://aaronpetry.io/blog/testing/</link>
       <pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:8080/blog/testing/</guid>
+      <guid>https://aaronpetry.io/blog/testing/</guid>
       <description>Welcome! Welcome to my first blog, blog post, and journey into the learning of basketball analytics.&#xA;About Me I am a data analyst based out of Seattle. I grew up in the Chicagoland area and am a huge Chicago sports fan. I recently switched up my career from infrastructure/cybersecurity and have moved into a data analytics team at lululemon. I love the idea (and have loved the experience thus far) of working with data, but I want to continue to get so much better through outside, continuous learning and side projects.</description>
     </item>
     <item>
       <title>Learning Basketball Analytics - Week 1 - Scraping Basketball-Reference</title>
-      <link>http://localhost:8080/blog/nba-week-1/</link>
+      <link>https://aaronpetry.io/blog/nba-week-1/</link>
       <pubDate>Sun, 28 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:8080/blog/nba-week-1/</guid>
+      <guid>https://aaronpetry.io/blog/nba-week-1/</guid>
       <description>Introduction Welcome to week one! I&amp;rsquo;m still making my way through Basketball on Paper, but I wanted to make sure I got a blog out this week (consistency, remember?).&#xA;As I work through the book and try to build models or do analysis, I know I&amp;rsquo;ll need data. So, for this week, I&amp;rsquo;ll walk through how I built a basic webscraper using BeautifulSoup. The webscraper grabs advanced team stats off of Basketball-Reference and saves them to a CSV for future use.</description>
     </item>
     <item>
       <title>Learning Basketball Analytics - Week 0 - Introduction</title>
-      <link>http://localhost:8080/blog/nba-week-0/</link>
+      <link>https://aaronpetry.io/blog/nba-week-0/</link>
       <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:8080/blog/nba-week-0/</guid>
+      <guid>https://aaronpetry.io/blog/nba-week-0/</guid>
       <description>Welcome! Welcome to my first blog, blog post, and journey into the learning of basketball analytics.&#xA;About Me I am a data analyst based out of Seattle. I grew up in the Chicagoland area and am a huge Chicago sports fan. I recently switched up my career from infrastructure/cybersecurity and have moved into a data analytics team at lululemon. I love the idea (and have loved the experience thus far) of working with data, but I want to continue to get so much better through outside, continuous learning and side projects.</description>
     </item>
   </channel>
